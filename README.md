@@ -1,4 +1,4 @@
-# Docker, React, TailWindcss, Apollo Client
+# BoilerPlate: Docker, React, TailWindcss, Apollo Client
 
 ## Devops instructions
 
