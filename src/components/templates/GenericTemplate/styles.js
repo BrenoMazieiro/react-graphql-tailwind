@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Block } from 'components'
 
-const Wrapper = styled.div.attrs(() => ({
+const Wrapper = styled(Block).attrs(() => ({
   className: (
     `
       bg-white
