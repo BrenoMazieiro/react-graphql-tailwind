@@ -1,0 +1,47 @@
+version: '3'
+networks:
+  main:
+
+services:
+
+  proxy:
+    networks:
+      main:
+        aliases:
+          - "${PROXY_URL}"
+    container_name: "${PROXY_URL}"
+    image: jwilder/nginx-proxy:alpine
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - "./proxy.conf:/etc/nginx/conf.d/my_proxy.conf:ro"
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+
+  spa:
+    networks:
+      main:
+        aliases:
+          - "${SPA_URL}"
+    container_name: "${SPA_URL}"
+    image: nodejs-react
+    volumes:
+      - "./:/opt/app-root/src:rw"
+    ports:
+      - 80
+    environment:
+      VIRTUAL_HOST: "${SPA_URL}"
+      VIRTUAL_PORT: ${HTTP_PORT}
+      PORT: ${HTTP_PORT}
+      APP_ENV: "${ENVIRONMENT}"
+      NODE_ENV: "${ENVIRONMENT}"
+      HTTP_API_URL: "${HTTP_API_URL}"
+      WS_API_URL: "${WS_API_URL}"
+      CLIENT: "${CLIENT}"
+
+      DEBUG: "true"
+
+      DEBUG: "true"
+    command: ['.s2i/bin/assemble']
+    restart: unless-stopped
