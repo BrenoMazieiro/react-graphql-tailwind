@@ -10,7 +10,7 @@ describe('PageTemplate', () => {
     const wrapper = wrap({
       children: <div id="test" />,
       idPage: 'PageTemplate',
-      sider: <div />,
+      hero: <div />,
       header: <div />,
       content: <div />,
       footer: <div />,
@@ -23,7 +23,7 @@ describe('PageTemplate', () => {
   it('should render PageTemplate', () => {
     const wrapper = wrap({
       idPage: 'PageTemplate',
-      sider: <div />,
+      hero: <div />,
       header: <div />,
       content: <div />,
       footer: <div />,

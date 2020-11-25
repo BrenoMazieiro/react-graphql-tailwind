@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // import { CheckLoggedInn } from 'utils'
-import { PageTemplate, Block } from 'components'
+import {
+  PageTemplate, Header, Hero, HomeContent, Footer,
+} from 'components'
 
 const HomePage = ({
   // t,
@@ -11,10 +13,10 @@ const HomePage = ({
   return (
     <PageTemplate
       idPage={idPage}
-      sider={<Block >Sider</Block>}
-      header={<Block >Header</Block>}
-      content={<Block >Content</Block>}
-      footer={<Block >Footer</Block>}
+      hero={<Hero />}
+      header={<Header />}
+      content={<HomeContent />}
+      footer={<Footer />}
     />
   )
 }

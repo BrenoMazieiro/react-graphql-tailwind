@@ -1,22 +1,49 @@
 import styled from 'styled-components'
-import { Block } from 'components'
 
-const Wrapper = styled(Block).attrs(() => ({
+const Wrapper = styled.div.attrs((props) => ({
   className: (
     `
-      bg-white
-      dark:bg-black
+      ${props.className}
     `
   ),
 }))`
   height: 100vh;
+  background-image: linear-gradient(-225deg, #6e68b1 0%, #575e98 100%);
 `
 
-const Sider = styled(Block)``
-const Header = styled(Block)``
-const Content = styled(Block)``
-const Footer = styled(Block)``
+const Hero = styled.div.attrs((props) => ({
+  className: (
+    `
+      ${props.className}
+    `
+  ),
+}))`
+`
+const Header = styled.div.attrs((props) => ({
+  className: (
+    `
+      ${props.className}
+    `
+  ),
+}))`
+`
+const Content = styled.div.attrs((props) => ({
+  className: (
+    `
+      ${props.className}
+    `
+  ),
+}))`
+`
+const Footer = styled.div.attrs((props) => ({
+  className: (
+    `
+      ${props.className}
+    `
+  ),
+}))`
+`
 
 export {
-  Wrapper, Sider, Header, Content, Footer,
+  Wrapper, Hero, Header, Content, Footer,
 }

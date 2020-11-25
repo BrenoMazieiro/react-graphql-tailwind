@@ -2,28 +2,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
   Wrapper,
-  Sider,
+  Hero,
   Content,
   Header,
   Footer,
 } from './styles'
 
 const PageTemplate = ({
-  idPage, sider, header, content, footer,
+  idPage, hero, header, content, footer,
 }) => {
   return (
-    <Wrapper id={idPage}>
-      <Sider>{sider}</Sider>
-      <Header>{header}</Header>
-      <Content>{content}</Content>
-      <Footer>{footer}</Footer>
+    <Wrapper className="flex flex-col" id={idPage}>
+      <Header className="bg-gray-700">{header}</Header>
+      <Hero className="bg-red-700">{hero}</Hero>
+      <Content className="bg-blue-700">{content}</Content>
+      <Footer className="bg-green-700">{footer}</Footer>
     </Wrapper>
   )
 }
 
 PageTemplate.propTypes = {
   idPage: PropTypes.string.isRequired,
-  sider: PropTypes.node.isRequired,
+  hero: PropTypes.node.isRequired,
   header: PropTypes.node.isRequired,
   content: PropTypes.any.isRequired,
   footer: PropTypes.node.isRequired,
