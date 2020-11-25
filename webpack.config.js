@@ -1,8 +1,17 @@
 const path = require('path')
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin')
 
-module.exports = {
+const smp = new SpeedMeasurePlugin()
+
+module.exports = smp.wrap({
+  optimization: {
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
+  },
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
   output: {
+    pathinfo: false,
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
   },
@@ -22,7 +31,8 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        exclude: /\.test\.js$/,
+        include: path.resolve(__dirname, 'src'),
         use: {
           loader: 'babel-loader',
         },
@@ -30,7 +40,7 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: [
-          /node_modules\/(?!antd).*/,
+          /node_modules/,
         ],
         use: [
           { loader: 'style-loader' },
@@ -46,4 +56,4 @@ module.exports = {
       },
     ],
   },
-}
+})
